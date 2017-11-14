@@ -1,3 +1,7 @@
+1.9.7.4441
+- update to PMS 1.9.7.4441
+- sync'd plugin version with PMS version
+
 1.2.0
 - update to PMS 1.4.3.3433
 

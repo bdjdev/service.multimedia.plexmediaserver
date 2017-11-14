@@ -1,0 +1,4 @@
+(1) Download debian 64-bit version from https://www.plex.tv/downloads/
+(2) ar x <deb file>
+(3) tar xvfx data.tar.gz
+(2) Copy contents of /usr/lib/plexmediaserver/ into this folder

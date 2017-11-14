@@ -1,14 +1,14 @@
 # Kodi Media Center language file
 # Addon Name: Plex Media Server
 # Addon id: service.multimedia.plexmediaserver
-# Addon Provider: hugepants
+# Addon Provider: bdjdev
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenELEC-addons\n"
-"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+#"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
 "POT-Creation-Date: 2015-06-06 02:00+0000\n"
 "PO-Revision-Date: 2015-06-06 02:01+0000\n"
-"Last-Translator: hugepants\n"
+"Last-Translator: bdjdev\n"
 "Language-Team: LANGUAGE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
