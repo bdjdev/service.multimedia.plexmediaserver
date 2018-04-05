@@ -11,6 +11,7 @@
 9. `mv usr/lib/plexmediaserver/* ../`
 10. `cd ../`
 11. `rm -rf tmp`
-12. `zip -r service.multimedia.plexmediaserver-<version>.zip service.multimedia.plexmediaserver/ -x *.git*`
-13. `scp service.multimedia.plexmediaserver-<version>.zip <kodi_box>:Downloads/`
-14. Inside Kodi, install the plugin by selecting the ZIP file
+12. `cd ../..`
+13. `zip -r service.multimedia.plexmediaserver-<version>.zip service.multimedia.plexmediaserver/ -x *.git*`
+14. `scp service.multimedia.plexmediaserver-<version>.zip <kodi_box>:Downloads/`
+15. Inside Kodi, install the plugin by selecting the ZIP file
