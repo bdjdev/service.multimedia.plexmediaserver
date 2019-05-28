@@ -11,7 +11,7 @@ if [ "${SCRIPT_DIR}" = "" ] || [ ! -e "${SCRIPT_DIR}" ]; then
 fi
 
 # Download debian 64-bit version from https://www.plex.tv/downloads/
-plex_file=~/Downloads/plexmediaserver_1.15.3.835-5d4a5c895_amd64.deb
+plex_file=~/Downloads/plexmediaserver_1.15.6.1079-78232c603_amd64.deb
 echo "Plex Download is: ${plex_file}"
 if [ ! -f ${plex_file} ]; then
 	echo "ERROR: Plex download file is missing or has bad permissions: ${plex_file}"
