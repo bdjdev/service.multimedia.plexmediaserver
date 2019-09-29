@@ -71,7 +71,7 @@ echo "Packaging..."
 cd ${SCRIPT_DIR}/..
 output_file=service.multimedia.plexmediaserver-${version}.zip
 echo -en "Creating: ${output_file}: " && {
-	zip -r ${output_file} service.multimedia.plexmediaserver/ -x *.git* &>/dev/null
+	zip -r ${output_file} service.multimedia.plexmediaserver/ -x *.git* *build.sh *Readme.md &>/dev/null
 	echo "DONE"
 }
 
