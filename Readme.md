@@ -1,5 +1,14 @@
 # Build Instructions
 
+## Automated Instructions
+
+1. Download debian 64-bit version from https://www.plex.tv/downloads/
+2. Run the build script: `build.sh <plexmediaserver_version_amd64.deb>`
+3. `scp service.multimedia.plexmediaserver-<version>.zip <kodi_box>:Downloads/`
+4. Inside Kodi, install the plugin by selecting the ZIP file
+
+## Manual Instructions
+
 1. Download debian 64-bit version from https://www.plex.tv/downloads/
 2. Change version in `addon.xml` to match downloaded version
 3. Update `changelog.txt`
