@@ -28,6 +28,31 @@ fi
 version=$(basename "${plex_file}" | sed -e "s|.*_\(.*\)-.*|\\1|")
 echo "Plex Version: ${version}"
 
+output_file=service.multimedia.plexmediaserver-${version}.zip
+if [ -f ${output_file} ]; then
+	echo "This will overwrite the existing file: ${output_file}"
+	unset input
+	while [ "${input}" = "" ]; do
+		echo -n "Would you like to proceed? (yes*/no): "
+		read input
+
+		# evaluate as lowercase
+		case "${input,,}" in 
+			yes|y|'')
+				input=yes
+				/bin/rm -f ${output_file}
+				;;
+			no|n)
+				echo "Exiting..."
+				exit 0
+				;;
+			*)
+				unset input
+				;;
+		esac
+	done
+fi
+
 # cleanup SCRIPT_DIR/lib/*
 echo -en "Cleaning up: ${SCRIPT_DIR}/lib/*: " && {
 	/bin/rm -rf ${SCRIPT_DIR}/lib/*
@@ -52,9 +77,9 @@ echo -en "Installing Plex Libs to ${SCRIPT_DIR}/lib: " && {
 	/bin/mv usr/lib/plexmediaserver/* ${SCRIPT_DIR}/lib/ &&
 	echo "DONE"
 } || exit 1
-echo "Cleaning up..." && popd > /dev/null && /bin/rm -rf tmp && popd >/dev/null
+echo "Cleaning up..." && popd > /dev/null && /bin/rm -rf ./tmp && popd >/dev/null
 
-# Change version in `addon.xml` to match downloaded version
+# Change version in 'addon.xml' to match downloaded version
 echo -en "Updating: addon.xml: " && {
 	sed -i "s|^\(       version\)=\".*\"$|\1=\"${version}\"|" ${SCRIPT_DIR}/addon.xml
 	echo "DONE"
@@ -62,16 +87,19 @@ echo -en "Updating: addon.xml: " && {
 
 # Update changelog.txt
 echo -en "Updating: changelog.txt: " && {
-	sed -i "1s/^/${version}\n- update to PMS ${version}\n\n/" ${SCRIPT_DIR}/changelog.txt
-	echo "DONE"
+	if grep "^${version}$" ${SCRIPT_DIR}/changelog.txt &>/dev/null; then
+		echo "SKIPPING (Already Updated)"
+	else
+		sed -i "1s/^/${version}\n- update to PMS ${version}\n\n/" ${SCRIPT_DIR}/changelog.txt
+		echo "DONE"
+	fi
 } || exit 1
 
 # Package
 echo "Packaging..."
 cd ${SCRIPT_DIR}/..
-output_file=service.multimedia.plexmediaserver-${version}.zip
 echo -en "Creating: ${output_file}: " && {
-	zip -r ${output_file} service.multimedia.plexmediaserver/ -x *.git* *build.sh *Readme.md output/ &>/dev/null
+	zip -r ${output_file} service.multimedia.plexmediaserver/ -x *.git* *build.sh *Readme.md */output/* &>/dev/null
 	echo "DONE"
 }
 
